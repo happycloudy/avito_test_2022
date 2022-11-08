@@ -1,12 +1,18 @@
 import {IRoute} from "./IRoute";
 import Home from "../pages/Home";
+import News from "../pages/News";
 
 const routes: IRoute[] = [
     {
+        name: 'Новости',
+        path: '/news',
+        component: <News/>
+    },
+    {
         name: 'Главная',
         path: '/',
-        component: Home
-    }
+        component: <Home/>
+    },
 ]
 
 export default routes
