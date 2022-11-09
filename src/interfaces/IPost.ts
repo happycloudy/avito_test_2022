@@ -4,4 +4,5 @@ export interface IPost {
     score: number
     by: string
     time: number
+    comments: number[]
 }

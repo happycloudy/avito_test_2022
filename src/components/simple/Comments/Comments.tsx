@@ -1,11 +1,20 @@
 import React from 'react';
 import {List} from "antd";
+import Comment from "../../smart/Comment/Comment";
 
-const Comments = () => {
+interface IProps {
+    comments: number[]
+}
+
+const Comments = ({comments}: IProps) => {
     return (
-        <List>
-
-        </List>
+        comments ?
+            <List>
+                {comments.map(id => (
+                    <Comment key={id} id={id}/>
+                ))}
+            </List> :
+            <></>
     );
 };
 

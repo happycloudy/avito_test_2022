@@ -11,6 +11,9 @@ const postService = hackerNewsApi.injectEndpoints({
         }),
         getPostById: builder.query<IPost, number>({
             query: (id) => `/item/${id}.json`,
+            transformResponse: (response: IPost & {kids: number[]}) => {
+                return {...response, comments: response.kids}
+            }
         }),
     })
 })

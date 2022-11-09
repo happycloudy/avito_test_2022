@@ -13,7 +13,7 @@ const Post = () => {
         post ?
             <>
                 <Card title={post.title} extra={<span>{date}</span>}/>
-                <Comments/>
+                <Comments comments={post.comments}/>
             </> :
             <></>
     );
