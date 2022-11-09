@@ -3,5 +3,5 @@ export interface IPost {
     title: string
     score: number
     by: string
-    time: Date
+    time: number
 }

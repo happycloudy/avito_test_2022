@@ -2,29 +2,33 @@ import React from 'react';
 import {Space} from "antd";
 import {StarOutlined, FieldTimeOutlined} from '@ant-design/icons';
 import {List as AntList} from 'antd'
-import {IPost} from "../../../interfaces/IPost";
 import {Link} from "react-router-dom";
+import {useGetPostByIdQuery} from "../../../services/PostService/PostService";
 
 interface IProps {
-    post: IPost
+    postId: number
 }
 
-const ListItem = ({post}: IProps) => {
-    return (
-        <AntList.Item
-            actions={[
-                <Space>
-                    {React.createElement(StarOutlined)}
-                    {post.score}
-                </Space>,
-                <Space>
-                    {React.createElement(FieldTimeOutlined)}
-                    {post.time.toLocaleDateString()}
-                </Space>,
+const ListItem = ({postId}: IProps) => {
+    const {data: post, isSuccess} = useGetPostByIdQuery(postId)
 
-            ]}>
-            <AntList.Item.Meta title={<Link to={`/news/${post.id}`}>{post.title}</Link>} description={post.by}/>
-        </AntList.Item>
+    return (
+        isSuccess ?
+            <AntList.Item
+                actions={[
+                    <Space>
+                        {React.createElement(StarOutlined)}
+                        {post.score}
+                    </Space>,
+                    <Space>
+                        {React.createElement(FieldTimeOutlined)}
+                        {(new Date(post.time * 1000)).toLocaleDateString()}
+                    </Space>,
+
+                ]}>
+                <AntList.Item.Meta title={<Link to={`/news/${post.id}`}>{post.title}</Link>} description={post.by}/>
+            </AntList.Item> :
+            <></>
     );
 };
 
