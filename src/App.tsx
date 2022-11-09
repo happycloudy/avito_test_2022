@@ -3,6 +3,7 @@ import {useRoutes} from "./hooks/useRoutes";
 import {Layout} from "antd";
 import Header from "./components/simple/Header/Header";
 import 'antd/dist/antd.css'
+import './styles.css'
 
 function App() {
     const routes = useRoutes()
