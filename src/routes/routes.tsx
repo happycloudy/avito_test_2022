@@ -5,7 +5,7 @@ import News from "../pages/News";
 const routes: IRoute[] = [
     {
         name: 'Новости',
-        path: '/news',
+        path: '/news/:id',
         component: <News/>
     },
     {
