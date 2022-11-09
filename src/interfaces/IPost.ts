@@ -3,4 +3,5 @@ export interface IPost {
     rating: number
     author: string
     publishDate: Date
+    id: number
 }

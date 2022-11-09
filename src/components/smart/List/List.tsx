@@ -8,13 +8,15 @@ const exampleData: IPost[] = [
         title: 'Название1',
         rating: 0,
         author: 'Автор1',
-        publishDate: new Date()
+        publishDate: new Date(),
+        id: 0,
     },
     {
         title: 'Название2',
         rating: 3,
         author: 'Автор2',
-        publishDate: new Date()
+        publishDate: new Date(),
+        id: 1,
     },
 ]
 
