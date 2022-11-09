@@ -10,7 +10,7 @@ const Home = () => {
         <Content>
             <Title title={'Главная'}
                    actions={[<Button key='reload' type="primary">Обновить список</Button>]}
-                   subtitle={'Здесь распологаются последние 100 новостей'}/>
+                   subtitle={'Здесь располагаются последние 100 новостей'}/>
             <PostsListContainer/>
         </Content>
     );
