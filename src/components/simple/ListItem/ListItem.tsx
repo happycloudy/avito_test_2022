@@ -15,15 +15,15 @@ const ListItem = ({post}: IProps) => {
             actions={[
                 <Space>
                     {React.createElement(StarOutlined)}
-                    {post.rating}
+                    {post.score}
                 </Space>,
                 <Space>
                     {React.createElement(FieldTimeOutlined)}
-                    {post.publishDate.toLocaleDateString()}
+                    {post.time.toLocaleDateString()}
                 </Space>,
 
             ]}>
-            <AntList.Item.Meta title={<Link to={`/news/${post.id}`}>{post.title}</Link>} description={post.author}/>
+            <AntList.Item.Meta title={<Link to={`/news/${post.id}`}>{post.title}</Link>} description={post.by}/>
         </AntList.Item>
     );
 };

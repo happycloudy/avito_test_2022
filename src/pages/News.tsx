@@ -1,6 +1,6 @@
 import React from 'react';
 import {Layout} from "antd";
-import Title from "../components/smart/Title/Title";
+import Title from "../components/simple/Title/Title";
 
 const { Content } = Layout;
 

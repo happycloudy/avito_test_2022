@@ -6,16 +6,16 @@ import {IPost} from "../../../interfaces/IPost";
 const exampleData: IPost[] = [
     {
         title: 'Название1',
-        rating: 0,
-        author: 'Автор1',
-        publishDate: new Date(),
+        score: 0,
+        by: 'Автор1',
+        time: new Date(),
         id: 0,
     },
     {
         title: 'Название2',
-        rating: 3,
-        author: 'Автор2',
-        publishDate: new Date(),
+        score: 3,
+        by: 'Автор2',
+        time: new Date(),
         id: 1,
     },
 ]
