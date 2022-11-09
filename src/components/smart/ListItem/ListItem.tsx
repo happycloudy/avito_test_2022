@@ -1,5 +1,6 @@
 import React from 'react';
-import {Typography} from "antd";
+import {Space} from "antd";
+import {StarOutlined, FieldTimeOutlined} from '@ant-design/icons';
 import {List as AntList} from 'antd'
 import {IPost} from "../../../interfaces/IPost";
 
@@ -9,10 +10,19 @@ interface IProps {
 
 const ListItem = ({post}: IProps) => {
     return (
-        <AntList.Item>
-            <Typography.Text>
-                {post.title}
-            </Typography.Text>
+        <AntList.Item
+            actions={[
+                <Space>
+                    {React.createElement(StarOutlined)}
+                    {post.rating}
+                </Space>,
+                <Space>
+                    {React.createElement(FieldTimeOutlined)}
+                    {post.publishDate.toLocaleDateString()}
+                </Space>,
+
+            ]}>
+            <AntList.Item.Meta title={post.title} description={post.author}/>
         </AntList.Item>
     );
 };

@@ -22,6 +22,7 @@ const List = () => {
     return (
         <AntList
             bordered
+            itemLayout="vertical"
             dataSource={exampleData}
             renderItem={post => <ListItem post={post}/>}
         />
