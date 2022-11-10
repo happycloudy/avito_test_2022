@@ -8,7 +8,7 @@ const { Content } = Layout;
 const News = () => {
     return (
         <Content style={{height: '100%'}}>
-            <Title title={'Новость'}/>
+            <Title haveBackButton title={'Новость'}/>
             <Post/>
         </Content>
     );
