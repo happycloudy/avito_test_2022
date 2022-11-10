@@ -3,7 +3,7 @@ import {Col, List, Row, Typography} from "antd";
 import Comment from "../../smart/Comment/Comment";
 
 interface IProps {
-    comments: number[]
+    comments?: number[]
 }
 
 const Comments = ({comments}: IProps) => {
