@@ -1,26 +1,28 @@
 import React from 'react';
-import {Col, Comment as AntComment, Row} from 'antd';
+import {Button, Col, Comment as AntComment, Row} from 'antd';
 import {useGetCommentByIdQuery} from "../../../services/CommentsService/CommentsService";
+import {useToggle} from "../../../hooks/useToggle";
 
 interface IProps {
     id: number
 }
 
 const Comment = ({id}: IProps) => {
+    const [showNested, toggleShowNested] = useToggle(false)
     const {data: comment} = useGetCommentByIdQuery(id)
+
     return (
-        comment && !comment.deleted ?
+        comment && !comment.dead && !comment.deleted ?
             <Row>
                 <Col span={21} offset={1}>
                     <AntComment
-                        actions={[<span key="comment-nested-reply-to">Ответы</span>]}
+                        actions={[comment.nestedComments && <Button onClick={toggleShowNested} key="comment-nested">Ответы</Button>]}
                         content={<p>{comment.text}</p>}
                     >
                         {
-                            comment.nestedComments ?
-                                // TODO: поменять на вложенный коммент
-                                comment.nestedComments.map(comment => (
-                                    comment
+                            showNested && comment.nestedComments ?
+                                comment.nestedComments.map(commentId => (
+                                    <Comment key={commentId} id={commentId}/>
                                 )):
                                 <></>
                         }

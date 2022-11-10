@@ -1,5 +1,5 @@
 import React from 'react';
-import {List} from "antd";
+import {Col, List, Row, Typography} from "antd";
 import Comment from "../../smart/Comment/Comment";
 
 interface IProps {
@@ -14,7 +14,13 @@ const Comments = ({comments}: IProps) => {
                     <Comment key={id} id={id}/>
                 ))}
             </List> :
-            <></>
+            <Row>
+                <Col span={4} offset={10}>
+                    <Typography.Text className={'d-center'}>
+                        Нет комментариев
+                    </Typography.Text>
+                </Col>
+            </Row>
     );
 };
 
