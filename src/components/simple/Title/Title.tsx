@@ -3,7 +3,7 @@ import {PageHeader} from "antd";
 import {useHistory} from "react-router-dom";
 
 interface IProps {
-    title: string
+    title: React.ReactNode
     subtitle?: string
     actions?: JSX.Element[]
     haveBackButton?: boolean

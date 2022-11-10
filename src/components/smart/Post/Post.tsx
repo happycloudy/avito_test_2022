@@ -4,11 +4,13 @@ import {Button, Card, Space} from "antd";
 import {useGetPostByIdQuery} from "../../../services/PostService/PostService";
 import Comments from "../../simple/Comments/Comments";
 import {FieldTimeOutlined, UserOutlined, CommentOutlined, RightOutlined} from '@ant-design/icons'
+import Title from "../../simple/Title/Title";
+import {ReloadOutlined} from '@ant-design/icons'
 
 
 const Post = () => {
     const {id} = useParams<{ id: string }>()
-    const {data: post, isLoading} = useGetPostByIdQuery(parseInt(id))
+    const {data: post, isLoading, refetch} = useGetPostByIdQuery(parseInt(id))
     const date = post ? (new Date(post.time * 1000).toLocaleString()) : undefined
 
     return (
@@ -23,7 +25,7 @@ const Post = () => {
                                       <Button shape="circle">
                                           <RightOutlined/>
                                       </Button>
-                                  </a>:
+                                  </a> :
                                   <></>
                           }
                       </Space>
@@ -47,9 +49,22 @@ const Post = () => {
             </Card>
             {
                 post ?
-                    <div className={'comments-wrap'}>
-                        <Comments comments={post?.comments || undefined}/>
-                    </div> :
+                    <>
+                        <Title title={
+                            <Space align={'center'}>
+                                Комментарии
+                                <Button onClick={refetch}>
+                                    <Space align={'center'}>
+                                        <ReloadOutlined/>
+                                        Обновить список комментариев
+                                    </Space>
+                                </Button>
+                            </Space>
+                        }/>
+                        <div className={'comments-wrap'}>
+                            <Comments comments={post?.comments || undefined}/>
+                        </div>
+                    </> :
                     <></>
             }
         </>
