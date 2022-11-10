@@ -17,12 +17,12 @@ const ListItem = ({postId}: IProps) => {
             <AntList.Item
                 actions={[
                     <Space>
-                        {React.createElement(StarOutlined)}
+                        <StarOutlined/>
                         {post.score}
                     </Space>,
                     <Space>
-                        {React.createElement(FieldTimeOutlined)}
-                        {(new Date(post.time * 1000)).toLocaleDateString()}
+                        <FieldTimeOutlined/>
+                        {(new Date(post.time * 1000)).toLocaleString()}
                     </Space>,
 
                 ]}>

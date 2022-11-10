@@ -11,3 +11,13 @@
 .comments-wrap {
     margin-top: 15px;
 }
+
+.post-card-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-card-badge > *:last-child {
+    margin: 0 0 0 5px;
+}

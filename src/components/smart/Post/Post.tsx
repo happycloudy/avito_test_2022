@@ -3,17 +3,30 @@ import {useParams} from "react-router-dom";
 import {Card, Space} from "antd";
 import {useGetPostByIdQuery} from "../../../services/PostService/PostService";
 import Comments from "../../simple/Comments/Comments";
-import {UserOutlined} from '@ant-design/icons'
+import {FieldTimeOutlined, UserOutlined, CommentOutlined} from '@ant-design/icons'
 
 
 const Post = () => {
     const {id} = useParams<{ id: string }>()
     const {data: post, isLoading} = useGetPostByIdQuery(parseInt(id))
-    const date = post ? (new Date(post.time * 1000).toLocaleDateString()) : undefined
+    const date = post ? (new Date(post.time * 1000).toLocaleString()) : undefined
 
     return (
         <>
-            <Card loading={isLoading} title={post?.title} extra={[<span key={'date'}>{date}</span>]}>
+            <Card loading={isLoading}
+                  title={post?.title}
+                  extra={
+                      <Space direction={'vertical'} align={'start'}>
+                             <span className={'post-card-badge'}>
+                              <CommentOutlined />
+                              <p>{post?.comments?.length || 0}</p>
+                          </span>
+                          <span className={'post-card-badge'}>
+                              <FieldTimeOutlined/>
+                              <p>{date}</p>
+                          </span>
+                      </Space>
+                  }>
                 <Space>
                     <UserOutlined/>
                     {post?.by || 'Нет автора'}
