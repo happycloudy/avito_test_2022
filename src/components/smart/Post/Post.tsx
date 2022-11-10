@@ -1,9 +1,9 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
-import {Card, Space} from "antd";
+import {Button, Card, Space} from "antd";
 import {useGetPostByIdQuery} from "../../../services/PostService/PostService";
 import Comments from "../../simple/Comments/Comments";
-import {FieldTimeOutlined, UserOutlined, CommentOutlined} from '@ant-design/icons'
+import {FieldTimeOutlined, UserOutlined, CommentOutlined, RightOutlined} from '@ant-design/icons'
 
 
 const Post = () => {
@@ -14,11 +14,24 @@ const Post = () => {
     return (
         <>
             <Card loading={isLoading}
-                  title={post?.title}
+                  title={
+                      <Space>
+                          {post?.title}
+                          {
+                              post?.url ?
+                                  <a href={post.url}>
+                                      <Button shape="circle">
+                                          <RightOutlined/>
+                                      </Button>
+                                  </a>:
+                                  <></>
+                          }
+                      </Space>
+                  }
                   extra={
                       <Space direction={'vertical'} align={'start'}>
                              <span className={'post-card-badge'}>
-                              <CommentOutlined />
+                              <CommentOutlined/>
                               <p>{post?.comments?.length || 0}</p>
                           </span>
                           <span className={'post-card-badge'}>

@@ -5,4 +5,5 @@ export interface IPost {
     by: string
     time: number
     comments: number[]
+    url: string
 }
