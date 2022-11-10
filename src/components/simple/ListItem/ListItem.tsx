@@ -1,5 +1,5 @@
 import React from 'react';
-import {Space} from "antd";
+import {Skeleton, Space} from "antd";
 import {StarOutlined, FieldTimeOutlined} from '@ant-design/icons';
 import {List as AntList} from 'antd'
 import {Link} from "react-router-dom";
@@ -10,25 +10,25 @@ interface IProps {
 }
 
 const ListItem = ({postId}: IProps) => {
-    const {data: post, isSuccess} = useGetPostByIdQuery(postId)
+    const {data: post, isLoading} = useGetPostByIdQuery(postId)
 
     return (
-        isSuccess ?
+        !isLoading ?
             <AntList.Item
                 actions={[
                     <Space>
                         <StarOutlined/>
-                        {post.score}
+                        {post!.score}
                     </Space>,
                     <Space>
                         <FieldTimeOutlined/>
-                        {(new Date(post.time * 1000)).toLocaleString()}
+                        {(new Date(post!.time * 1000)).toLocaleString()}
                     </Space>,
 
                 ]}>
-                <AntList.Item.Meta title={<Link to={`/news/${post.id}`}>{post.title}</Link>} description={post.by}/>
+                <AntList.Item.Meta title={<Link to={`/news/${post!.id}`}>{post!.title}</Link>} description={post!.by}/>
             </AntList.Item> :
-            <></>
+            <Skeleton/>
     );
 };
 
