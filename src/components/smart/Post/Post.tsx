@@ -1,11 +1,13 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
-import {Button, Card, message, Space, Tooltip} from "antd";
+import {Button, Card, message, Space} from "antd";
 import {useGetPostByIdQuery} from "../../../services/PostService/PostService";
 import Comments from "../../simple/Comments/Comments";
-import {FieldTimeOutlined, UserOutlined, CommentOutlined, RightOutlined} from '@ant-design/icons'
+import {UserOutlined} from '@ant-design/icons'
 import Title from "../../simple/Title/Title";
 import {ReloadOutlined} from '@ant-design/icons'
+import PostTitle from "./PostTitle";
+import PostExtra from "./PostExtra";
 
 
 const Post = () => {
@@ -22,34 +24,8 @@ const Post = () => {
     return (
         <>
             <Card loading={isLoading}
-                  title={
-                      <Space>
-                          {post?.title}
-                          {
-                              post?.url ?
-                                  <a href={post.url}>
-                                      <Tooltip title="Ссылка на оригинал">
-                                          <Button shape="circle">
-                                              <RightOutlined/>
-                                          </Button>
-                                      </Tooltip>
-                                  </a> :
-                                  <></>
-                          }
-                      </Space>
-                  }
-                  extra={
-                      <Space direction={'vertical'} align={'start'}>
-                             <span className={'post-card-badge'}>
-                              <CommentOutlined/>
-                              <p>{post?.comments?.length || 0}</p>
-                          </span>
-                          <span className={'post-card-badge'}>
-                              <FieldTimeOutlined/>
-                              <p>{date}</p>
-                          </span>
-                      </Space>
-                  }>
+                  title={<PostTitle post={post}/>}
+                  extra={<PostExtra post={post} date={date}/>}>
                 <Space>
                     <UserOutlined/>
                     {post?.by || 'Нет автора'}
