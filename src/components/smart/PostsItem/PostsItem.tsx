@@ -1,7 +1,6 @@
 import React from 'react';
-import {Skeleton, Space} from "antd";
-import {StarOutlined, FieldTimeOutlined} from '@ant-design/icons';
-import {List as AntList} from 'antd'
+import {List as AntList, Skeleton, Space} from "antd";
+import {FieldTimeOutlined, StarOutlined} from '@ant-design/icons';
 import {Link} from "react-router-dom";
 import {useGetPostByIdQuery} from "../../../services/PostService/PostService";
 

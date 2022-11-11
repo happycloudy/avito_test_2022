@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Posts from "../components/simple/Posts/Posts";
+import Posts from "../components/smart/Posts/Posts";
 import {useGetLastPostsIdsQuery} from "../services/PostService/PostService";
 
 // TODO: Нужно поменять на конкретные тип для ref... но я не смог узнать на какие:)

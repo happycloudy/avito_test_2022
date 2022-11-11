@@ -3,9 +3,8 @@ import {useParams} from "react-router-dom";
 import {Button, Card, message, Space} from "antd";
 import {useGetPostByIdQuery} from "../../../services/PostService/PostService";
 import Comments from "../../simple/Comments/Comments";
-import {UserOutlined} from '@ant-design/icons'
-import Title from "../../simple/Title/Title";
-import {ReloadOutlined} from '@ant-design/icons'
+import {ReloadOutlined, UserOutlined} from '@ant-design/icons'
+import Title from "../Title/Title";
 import PostTitle from "./PostTitle";
 import PostExtra from "./PostExtra";
 

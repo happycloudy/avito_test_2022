@@ -5,15 +5,11 @@ const postService = hackerNewsApi.injectEndpoints({
     endpoints: (builder) => ({
         getLastPostsIds: builder.query<number[], void>({
             query: () => `/newstories.json`,
-            transformResponse: (response: number[]) => {
-                return response.slice(0, 100)
-            }
+            transformResponse: (response: number[]) => response.slice(0, 100)
         }),
         getPostById: builder.query<IPost, number>({
             query: (id) => `/item/${id}.json`,
-            transformResponse: (response: IPost & {kids: number[]}) => {
-                return {...response, comments: response?.kids}
-            }
+            transformResponse: (response: IPost & { kids: number[] }) => ({...response, comments: response?.kids})
         }),
     })
 })

@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {Button, Layout, message} from "antd";
-import Title from "../components/simple/Title/Title";
+import Title from "../components/smart/Title/Title";
 import PostsListContainer from "../containers/PostsListContainer";
 import {motion} from 'framer-motion'
 
@@ -29,7 +29,7 @@ const Home = () => {
                        actions={[
                            <Button key='reload'
                                    type="primary"
-                                   loading={loadingPosts || false}
+                                   loading={loadingPosts}
                                    onClick={handleRefetch}>
                                Обновить список
                            </Button>

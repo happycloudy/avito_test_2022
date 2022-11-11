@@ -1,4 +1,4 @@
-import {IRoute} from "./IRoute";
+import {IRoute} from "../interfaces/IRoute";
 import Home from "../pages/Home";
 import News from "../pages/News";
 import {Redirect} from "react-router-dom";
