@@ -4,6 +4,7 @@ import {Layout} from "antd";
 import {AnimatePresence} from 'framer-motion'
 import 'antd/dist/antd.css'
 import './styles.css'
+import PageContainer from "./containers/PageContainer";
 
 function App() {
     const routes = useRoutes()
@@ -12,7 +13,9 @@ function App() {
     return (
         <Layout className="App" id='App'>
             <AnimatePresence>
-                <Switch location={location} key={location.pathname}>{routes}</Switch>
+                <PageContainer>
+                    <Switch location={location} key={location.pathname}>{routes}</Switch>
+                </PageContainer>
             </AnimatePresence>
         </Layout>
     )
