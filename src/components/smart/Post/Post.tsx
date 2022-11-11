@@ -1,6 +1,6 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
-import {Button, Card, Space} from "antd";
+import {Button, Card, message, Space, Tooltip} from "antd";
 import {useGetPostByIdQuery} from "../../../services/PostService/PostService";
 import Comments from "../../simple/Comments/Comments";
 import {FieldTimeOutlined, UserOutlined, CommentOutlined, RightOutlined} from '@ant-design/icons'
@@ -13,6 +13,12 @@ const Post = () => {
     const {data: post, isLoading, refetch} = useGetPostByIdQuery(parseInt(id))
     const date = post ? (new Date(post.time * 1000).toLocaleString()) : undefined
 
+    const handleRefetch = () => {
+        refetch().then(() => {
+            message.success('Комментарии обновлены')
+        })
+    }
+
     return (
         <>
             <Card loading={isLoading}
@@ -22,9 +28,11 @@ const Post = () => {
                           {
                               post?.url ?
                                   <a href={post.url}>
-                                      <Button shape="circle">
-                                          <RightOutlined/>
-                                      </Button>
+                                      <Tooltip title="Ссылка на оригинал">
+                                          <Button shape="circle">
+                                              <RightOutlined/>
+                                          </Button>
+                                      </Tooltip>
                                   </a> :
                                   <></>
                           }
@@ -53,7 +61,7 @@ const Post = () => {
                         <Title title={
                             <Space align={'center'}>
                                 Комментарии
-                                <Button onClick={refetch}>
+                                <Button onClick={handleRefetch}>
                                     <Space align={'center'}>
                                         <ReloadOutlined/>
                                         Обновить список комментариев
