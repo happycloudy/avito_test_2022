@@ -21,9 +21,9 @@ const Home = () => {
     const handleLoadingPosts = (state: boolean) => setLoadingPosts(state)
 
     return (
-        <motion.div initial={{transform: 'translateX(-100%)'}}
+        <motion.div initial={{transform: 'translateX(-120%)'}}
                     animate={{transform: 'translateX(0%)', transition: {duration: 0.7}}}
-                    exit={{transform: 'translateX(-100%)', transition: {duration: 0.7}}}>
+                    exit={{transform: 'translateX(-120%)', transition: {duration: 0.7}}}>
             <Content className={'page'}>
                 <Title title={'Главная'}
                        actions={[

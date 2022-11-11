@@ -8,9 +8,9 @@ const {Content} = Layout;
 
 const News = () => {
     return (
-        <motion.div initial={{transform: 'translateX(100%)'}}
+        <motion.div initial={{transform: 'translateX(120%)'}}
                     animate={{transform: 'translateX(0%)', transition: {duration: 0.7}}}
-                    exit={{transform: 'translateX(100%)', transition: {duration: 0.7}}}>
+                    exit={{transform: 'translateX(120%)', transition: {duration: 0.7}}}>
             <Content className={'page'} style={{height: '100%'}}>
                 <Title haveBackButton title={'Новость'}/>
                 <Post/>

@@ -12,11 +12,11 @@ function App() {
 
     return (
         <Layout className="App" id='App'>
-            <AnimatePresence>
-                <PageContainer>
+            <PageContainer>
+                <AnimatePresence>
                     <Switch location={location} key={location.pathname}>{routes}</Switch>
-                </PageContainer>
-            </AnimatePresence>
+                </AnimatePresence>
+            </PageContainer>
         </Layout>
     )
 }

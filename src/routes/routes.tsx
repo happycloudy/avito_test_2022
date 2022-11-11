@@ -1,6 +1,7 @@
 import {IRoute} from "./IRoute";
 import Home from "../pages/Home";
 import News from "../pages/News";
+import {Redirect} from "react-router-dom";
 
 const routes: IRoute[] = [
     {
@@ -12,6 +13,11 @@ const routes: IRoute[] = [
         name: 'Главная',
         path: '/',
         component: <Home/>
+    },
+    {
+        name: '*',
+        path: '*',
+        component: <Redirect to={'/'}/>
     },
 ]
 
