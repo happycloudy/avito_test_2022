@@ -2,6 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Button, Layout, message} from "antd";
 import Title from "../components/simple/Title/Title";
 import PostsListContainer from "../containers/PostsListContainer";
+import {motion} from 'framer-motion'
 
 const {Content} = Layout;
 
@@ -20,19 +21,23 @@ const Home = () => {
     const handleLoadingPosts = (state: boolean) => setLoadingPosts(state)
 
     return (
-        <Content>
-            <Title title={'Главная'}
-                   actions={[
-                       <Button key='reload'
-                               type="primary"
-                               loading={loadingPosts || false}
-                               onClick={handleRefetch}>
-                           Обновить список
-                       </Button>
-                   ]}
-                   subtitle={'Здесь располагаются последние 100 новостей'}/>
-            <PostsListContainer refetchRef={refetchRef} handleLoading={handleLoadingPosts}/>
-        </Content>
+        <motion.div initial={{transform: 'translateX(-100%)'}}
+                    animate={{transform: 'translateX(0%)', transition: {duration: 0.7}}}
+                    exit={{transform: 'translateX(-100%)', transition: {duration: 0.7}}}>
+            <Content className={'page'}>
+                <Title title={'Главная'}
+                       actions={[
+                           <Button key='reload'
+                                   type="primary"
+                                   loading={loadingPosts || false}
+                                   onClick={handleRefetch}>
+                               Обновить список
+                           </Button>
+                       ]}
+                       subtitle={'Здесь располагаются последние 100 новостей'}/>
+                <PostsListContainer refetchRef={refetchRef} handleLoading={handleLoadingPosts}/>
+            </Content>
+        </motion.div>
     );
 };
 

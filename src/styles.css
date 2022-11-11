@@ -1,5 +1,7 @@
-#root, .App {
+body, #root, .App {
     min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
 }
 
 .d-center {
@@ -20,4 +22,9 @@
 
 .post-card-badge > *:last-child {
     margin: 0 0 0 5px;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
 }
