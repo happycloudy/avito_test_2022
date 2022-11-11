@@ -9,7 +9,7 @@ interface IProps {
     postId: number
 }
 
-const ListItem = ({postId}: IProps) => {
+const PostsItem = ({postId}: IProps) => {
     const {data: post, isLoading} = useGetPostByIdQuery(postId)
 
     return (
@@ -32,4 +32,4 @@ const ListItem = ({postId}: IProps) => {
     );
 };
 
-export default ListItem;
+export default PostsItem;

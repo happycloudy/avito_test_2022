@@ -11,7 +11,7 @@ function App() {
     const location = useLocation()
 
     return (
-        <Layout className="App">
+        <Layout className="App" id='App'>
             <Header/>
             <AnimatePresence>
                 <Switch location={location} key={location.pathname}>{routes}</Switch>

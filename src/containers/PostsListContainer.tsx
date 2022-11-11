@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import List from "../components/simple/List/List";
+import Posts from "../components/simple/Posts/Posts";
 import {useGetLastPostsIdsQuery} from "../services/PostService/PostService";
 
 // TODO: Нужно поменять на конкретные тип для ref... но я не смог узнать на какие:)
@@ -23,7 +23,9 @@ const PostsListContainer = ({refetchRef, handleLoading}: IProps) => {
     }, [isLoading])
 
     return (
-        <List postsIds={ids ? ids : []}/>
+        ids ?
+            <Posts postsIds={ids}/> :
+            <></>
     );
 };
 
